@@ -24,14 +24,14 @@ use std::time::Duration;
 ///
 /// Like all prompts, it implements the [`Prompt`] trait to configure and display prompts.
 #[derive(Clone)]
-pub struct SelectPrompt<C: Command> {
-    params: PromptParams<usize>,
+pub struct SelectPrompt<'f, C: Command> {
+    params: PromptParams<'f, usize>,
     choices: Vec<String>,
     /// Just for convenience for building the prompt with simple generics.
     cmd_type: PhantomData<C>,
 }
 
-impl<C: Command> SelectPrompt<C> {
+impl<'f, C: Command> SelectPrompt<'f, C> {
     /// Creates a new [`SelectPrompt`] with the given message and choices.
     ///
     /// # Panics
@@ -60,13 +60,13 @@ impl<C: Command> SelectPrompt<C> {
     }
 }
 
-impl<C: Command> PromptBuilder<C> for SelectPrompt<C> {
-    fn get_params_mut(&mut self) -> &mut PromptParams<Self::T> {
+impl<'f, C: Command> PromptBuilder<'f, C> for SelectPrompt<'f, C> {
+    fn get_params_mut(&mut self) -> &mut PromptParams<'f, Self::T> {
         &mut self.params
     }
 }
 
-impl<C: Command> Prompt<C> for SelectPrompt<C> {
+impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
     type T = usize;
 
     fn prompt(self) -> Result<Self::T, Interrupt<C>> {

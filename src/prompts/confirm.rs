@@ -19,13 +19,13 @@ use std::time::Duration;
 ///
 /// Like all prompts, it implements the [`Prompt`] trait to configure and display prompts.
 #[derive(Clone)]
-pub struct ConfirmPrompt<C: Command> {
-    params: PromptParams<bool>,
+pub struct ConfirmPrompt<'f, C: Command> {
+    params: PromptParams<'f, bool>,
     /// Just for convenience for building the prompt with simple generics.
     cmd_type: PhantomData<C>,
 }
 
-impl<C: Command> ConfirmPrompt<C> {
+impl<'f, C: Command> ConfirmPrompt<'f, C> {
     /// Creates a new [`ConfirmPrompt`] with the given message.
     ///
     /// Panics if `msg` is empty.
@@ -37,13 +37,13 @@ impl<C: Command> ConfirmPrompt<C> {
     }
 }
 
-impl<C: Command> PromptBuilder<C> for ConfirmPrompt<C> {
-    fn get_params_mut(&mut self) -> &mut PromptParams<Self::T> {
+impl<'f, C: Command> PromptBuilder<'f, C> for ConfirmPrompt<'f, C> {
+    fn get_params_mut(&mut self) -> &mut PromptParams<'f, Self::T> {
         &mut self.params
     }
 }
 
-impl<C: Command> Prompt<C> for ConfirmPrompt<C> {
+impl<'f, C: Command> Prompt<C> for ConfirmPrompt<'f, C> {
     type T = bool;
 
     fn prompt(self) -> Result<Self::T, Interrupt<C>> {

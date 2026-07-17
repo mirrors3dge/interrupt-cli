@@ -16,17 +16,17 @@ use std::time::Duration;
 ///
 /// Like all prompts, it implements the [`Prompt`] trait to configure and display prompts.
 #[derive(Clone)]
-pub struct ParsablePrompt<P, C>
+pub struct ParsablePrompt<'f, P, C>
 where
     P: FromStr,
     C: Command,
 {
-    params: PromptParams<P>,
+    params: PromptParams<'f, P>,
     /// Just for convenience for building the prompt with simple generics.
     cmd_type: PhantomData<C>,
 }
 
-impl<P, C> ParsablePrompt<P, C>
+impl<'f, P, C> ParsablePrompt<'f, P, C>
 where
     P: FromStr,
     P::Err: Display,
@@ -43,18 +43,18 @@ where
     }
 }
 
-impl<P, C> PromptBuilder<C> for ParsablePrompt<P, C>
+impl<'f, P, C> PromptBuilder<'f, C> for ParsablePrompt<'f, P, C>
 where
     P: FromStr,
     P::Err: Display,
     C: Command,
 {
-    fn get_params_mut(&mut self) -> &mut PromptParams<Self::T> {
+    fn get_params_mut(&mut self) -> &mut PromptParams<'f, Self::T> {
         &mut self.params
     }
 }
 
-impl<P, C> Prompt<C> for ParsablePrompt<P, C>
+impl<'f, P, C> Prompt<C> for ParsablePrompt<'f, P, C>
 where
     P: FromStr,
     P::Err: Display,

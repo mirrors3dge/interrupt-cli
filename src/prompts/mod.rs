@@ -25,19 +25,19 @@ pub use parsable::ParsablePrompt;
 pub use select::SelectPrompt;
 pub use text::TextPrompt;
 
-type Filter<T> = Arc<dyn Fn(&T) -> Result<(), String>>;
+// use `Arc` to allow cloning prompts.
+type Filter<'f, T> = Arc<dyn Fn(&T) -> Result<(), String> + 'f>;
 
 #[derive(Clone)]
-struct PromptParams<T> {
+struct PromptParams<'f, T> {
     msg: String,
     /// If any, it's always valid in regards to current filters.
     fallback: Option<T>,
-    /// Use `Arc` to allow cloning prompts.
-    filters: Vec<Filter<T>>,
+    filters: Vec<Filter<'f, T>>,
     help: Option<String>,
 }
 
-impl<T> PromptParams<T> {
+impl<'f, T> PromptParams<'f, T> {
     /// Creates new `PromptParams` for a prompt returning type `T`.
     ///
     /// Panics if `msg` is empty.
@@ -59,8 +59,8 @@ mod private {
     use super::{Prompt, PromptParams};
     use crate::Command;
 
-    pub(super) trait PromptBuilder<C: Command>: Prompt<C> {
-        fn get_params_mut(&mut self) -> &mut PromptParams<Self::T>;
+    pub(super) trait PromptBuilder<'f, C: Command>: Prompt<C> {
+        fn get_params_mut(&mut self) -> &mut PromptParams<'f, Self::T>;
     }
 }
 use private::PromptBuilder;
@@ -169,9 +169,9 @@ pub trait Prompt<C: Command>: Sized {
     ///
     /// Mostly useful when cloning a template prompt and only changing the message.
     #[must_use]
-    fn with_message(mut self, msg: impl AsRef<str>) -> Self
+    fn with_message<'f>(mut self, msg: impl AsRef<str>) -> Self
     where
-        Self: PromptBuilder<C>,
+        Self: PromptBuilder<'f, C>,
     {
         let params = self.get_params_mut();
         params.msg = msg.as_ref().to_owned();
@@ -190,9 +190,9 @@ pub trait Prompt<C: Command>: Sized {
     /// prompt (see [`with_filter()`](Self::with_filter). The fallback is also silently dropped if
     /// any new filter added by [`with_filter()`](Self::with_filter) rejects it at any time.
     #[must_use]
-    fn with_fallback(mut self, fallback: Self::T) -> Self
+    fn with_fallback<'f>(mut self, fallback: Self::T) -> Self
     where
-        Self: PromptBuilder<C>,
+        Self: PromptBuilder<'f, C>,
     {
         let params = self.get_params_mut();
 
@@ -216,11 +216,11 @@ pub trait Prompt<C: Command>: Sized {
     /// If the fallback value already set by [`with_fallback()`](`Self::with_fallback`) is
     /// invalidated by a new filter, the fallback is dropped.
     #[must_use]
-    fn with_filter<F, E>(mut self, filter: F) -> Self
+    fn with_filter<'f, F, E>(mut self, filter: F) -> Self
     where
-        F: Fn(&Self::T) -> Result<(), E> + 'static,
+        F: Fn(&Self::T) -> Result<(), E> + 'f,
         E: Display,
-        Self: PromptBuilder<C>,
+        Self: PromptBuilder<'f, C>,
     {
         let params = self.get_params_mut();
 
@@ -241,9 +241,9 @@ pub trait Prompt<C: Command>: Sized {
     ///
     /// Help is shown when the user types 'help'.
     #[must_use]
-    fn with_help(mut self, help: impl AsRef<str>) -> Self
+    fn with_help<'f>(mut self, help: impl AsRef<str>) -> Self
     where
-        Self: PromptBuilder<C>,
+        Self: PromptBuilder<'f, C>,
     {
         let params = self.get_params_mut();
         params.help = Some(help.as_ref().to_owned());

@@ -10,13 +10,13 @@ use std::time::Duration;
 ///
 /// Like all prompts, it implements the [`Prompt`] trait to configure and display prompts.
 #[derive(Clone)]
-pub struct TextPrompt<C: Command> {
-    params: PromptParams<String>,
+pub struct TextPrompt<'f, C: Command> {
+    params: PromptParams<'f, String>,
     /// Just for convenience for building the prompt with simple generics.
     cmd_type: PhantomData<C>,
 }
 
-impl<C: Command> TextPrompt<C> {
+impl<'f, C: Command> TextPrompt<'f, C> {
     /// Creates a new [`TextPrompt`] with the given message.
     ///
     /// Panics if `msg` is empty.
@@ -28,13 +28,13 @@ impl<C: Command> TextPrompt<C> {
     }
 }
 
-impl<C: Command> PromptBuilder<C> for TextPrompt<C> {
-    fn get_params_mut(&mut self) -> &mut PromptParams<Self::T> {
+impl<'f, C: Command> PromptBuilder<'f, C> for TextPrompt<'f, C> {
+    fn get_params_mut(&mut self) -> &mut PromptParams<'f, Self::T> {
         &mut self.params
     }
 }
 
-impl<C: Command> Prompt<C> for TextPrompt<C> {
+impl<'f, C: Command> Prompt<C> for TextPrompt<'f, C> {
     type T = String;
 
     fn prompt(self) -> Result<Self::T, Interrupt<C>> {
