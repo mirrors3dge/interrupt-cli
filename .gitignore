@@ -1,0 +1,43 @@
+# Rust
+/target
+*.lock
+*.d
+*.rmeta
+*.rlib
+*.pdb
+*lock.json
+*.cargo-lock
+*.exp
+*.expr
+
+# IDEs
+.vscode/
+.zed/
+
+# misc
+*.env
+.env.*
+!.env.example
+*.log
+*.tmp
+*.temp
+*.bin
+*.exe
+*.o
+*.s
+*.swp
+*.swap
+*.iso
+*.dll
+*.dmg
+*.so
+*.lib
+*.pst
+*.lnk
+.DS_Store
+out/
+tmp/
+temp/
+build/
+builds/
+libs/
