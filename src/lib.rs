@@ -108,8 +108,11 @@ mod input;
 pub mod prompts;
 pub mod utils;
 
-#[cfg(feature = "colored_print")]
-pub use colored; // to allow use in macros
+#[doc(hidden)]
+pub mod _private {
+    #[cfg(feature = "colored_print")]
+    pub use colored; // to allow use in macros
+}
 
 pub use command::{Command, Interrupt, Unparsable};
 pub use input::{InputTimeout, OptionalInputTimeout};

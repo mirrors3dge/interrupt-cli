@@ -3,7 +3,7 @@
 #[macro_export]
 macro_rules! print_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.bold());
     }};
@@ -12,7 +12,7 @@ macro_rules! print_bold {
 #[macro_export]
 macro_rules! println_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.bold());
     }};
@@ -23,7 +23,7 @@ macro_rules! println_bold {
 #[macro_export]
 macro_rules! print_red {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.red());
     }};
@@ -32,7 +32,7 @@ macro_rules! print_red {
 #[macro_export]
 macro_rules! println_red {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.red());
     }};
@@ -41,7 +41,7 @@ macro_rules! println_red {
 #[macro_export]
 macro_rules! print_red_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.red().bold());
     }};
@@ -50,7 +50,7 @@ macro_rules! print_red_bold {
 #[macro_export]
 macro_rules! println_red_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.red().bold());
     }};
@@ -61,7 +61,7 @@ macro_rules! println_red_bold {
 #[macro_export]
 macro_rules! print_yellow {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.yellow());
     }};
@@ -70,7 +70,7 @@ macro_rules! print_yellow {
 #[macro_export]
 macro_rules! println_yellow {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.yellow());
     }};
@@ -79,7 +79,7 @@ macro_rules! println_yellow {
 #[macro_export]
 macro_rules! print_yellow_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.yellow().bold());
     }};
@@ -88,7 +88,7 @@ macro_rules! print_yellow_bold {
 #[macro_export]
 macro_rules! println_yellow_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.yellow().bold());
     }};
@@ -99,7 +99,7 @@ macro_rules! println_yellow_bold {
 #[macro_export]
 macro_rules! print_green {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.green());
     }};
@@ -108,7 +108,7 @@ macro_rules! print_green {
 #[macro_export]
 macro_rules! println_green {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.green());
     }};
@@ -117,7 +117,7 @@ macro_rules! println_green {
 #[macro_export]
 macro_rules! print_green_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         print!("{}", s.green().bold());
     }};
@@ -126,7 +126,7 @@ macro_rules! print_green_bold {
 #[macro_export]
 macro_rules! println_green_bold {
     ($($arg:tt)*) => {{
-        use $crate::colored::Colorize as _;
+        use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
         println!("{}", s.green().bold());
     }};
