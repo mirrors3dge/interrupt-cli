@@ -12,8 +12,13 @@
 //!
 //! ## Crate features
 //!
-//! - `colored_print` (default): enables [`println_red!`], [`println_bold!`], etc. macros. When enabled, some
-//!   errors printed by this crate's prompts at runtime will be colored (only works in ANSI terminals).
+//! - `styled-print` (default): provides constant in `interrupt_cli::term_utils::styled_print`
+//!   corresponding to ANSI escape codes to print to the terminal with different styles and colors.
+//!   Also enables [`println_red!`], [`println_bold!`] and other terminal styling macros,
+//!   but only works in ANSI terminals!
+//!
+//! - `use-styled-print` (default): when enabled, some errors printed by this crate's prompts at
+//!   runtime will be colored and styled, but only works in ANSI terminals!
 //!
 //! ## Comprehensive exemple
 //!
@@ -106,13 +111,7 @@
 mod command;
 mod input;
 pub mod prompts;
-pub mod utils;
-
-#[doc(hidden)]
-pub mod _private {
-    #[cfg(feature = "colored_print")]
-    pub use colored; // to allow use in macros
-}
+pub mod term_utils;
 
 pub use command::{Command, Interrupt, Unparsable};
 pub use input::{InputTimeout, OptionalInputTimeout};

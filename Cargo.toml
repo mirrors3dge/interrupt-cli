@@ -10,11 +10,12 @@ keywords = ["cli", "terminal", "parsing", "utility", "input"]
 categories = ["accessibility", "command-line-interface", "parsing"]
 
 [features]
-default = ["colored_print"]
-colored_print = ["dep:colored"]
+default = ["styled-print", "use-styled-print"]
+styled-print = []
+use-styled-print = ["styled-print"]
 
 [dependencies]
-colored = { version = "3.1.1", optional = true }
+
 
 [lints.rust]
 # crate
@@ -26,7 +27,6 @@ unused_crate_dependencies = "warn"
 cargo_common_metadata = "warn"
 multiple_crate_versions = "warn"
 negative_feature_names = "warn"
-redundant_feature_names = "warn"
 wildcard_dependencies = "warn"
 
 # code

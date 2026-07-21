@@ -1,10 +1,10 @@
-use crate::utils::clear_terminal;
+use crate::term_utils::clear_terminal;
 use crate::{Command, Interrupt};
-#[cfg(feature = "colored_print")]
+#[cfg(feature = "use-styled-print")]
 use crate::{println_red, println_yellow};
-#[cfg(not(feature = "colored_print"))]
+#[cfg(not(feature = "use-styled-print"))]
 use println as println_red;
-#[cfg(not(feature = "colored_print"))]
+#[cfg(not(feature = "use-styled-print"))]
 use println as println_yellow;
 
 use std::cell::LazyCell;

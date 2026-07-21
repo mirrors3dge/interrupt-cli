@@ -1,10 +1,10 @@
 use super::Prompt;
 use crate::command::{Command, Interrupt};
 use crate::input::{InputTimeout, OptionalInputTimeout, read_input, read_input_timeout};
-#[cfg(feature = "colored_print")]
+#[cfg(feature = "use-styled-print")]
 use crate::println_red;
 use crate::prompts::{PromptParams, private::PromptBuilder};
-#[cfg(not(feature = "colored_print"))]
+#[cfg(not(feature = "use-styled-print"))]
 use println as println_red;
 
 use std::fmt::Display;
