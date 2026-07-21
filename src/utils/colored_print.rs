@@ -2,6 +2,9 @@
 /// Like [`print!`], but bold.
 #[macro_export]
 macro_rules! print_bold {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -11,6 +14,9 @@ macro_rules! print_bold {
 /// Like [`println!`], but bold.
 #[macro_export]
 macro_rules! println_bold {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -22,6 +28,9 @@ macro_rules! println_bold {
 /// Like [`print!`], but red.
 #[macro_export]
 macro_rules! print_red {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -31,6 +40,9 @@ macro_rules! print_red {
 /// Like [`println!`], but red.
 #[macro_export]
 macro_rules! println_red {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -40,6 +52,9 @@ macro_rules! println_red {
 /// Like [`print!`], but red and bold.
 #[macro_export]
 macro_rules! print_red_bold {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -49,6 +64,9 @@ macro_rules! print_red_bold {
 /// Like [`println!`], but red and bold.
 #[macro_export]
 macro_rules! println_red_bold {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -60,6 +78,9 @@ macro_rules! println_red_bold {
 /// Like [`print!`], but yellow.
 #[macro_export]
 macro_rules! print_yellow {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -69,6 +90,9 @@ macro_rules! print_yellow {
 /// Like [`println!`], but yellow.
 #[macro_export]
 macro_rules! println_yellow {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -78,6 +102,9 @@ macro_rules! println_yellow {
 /// Like [`print!`], but yellow and bold.
 #[macro_export]
 macro_rules! print_yellow_bold {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -87,6 +114,9 @@ macro_rules! print_yellow_bold {
 /// Like [`println!`], but yellow and bold.
 #[macro_export]
 macro_rules! println_yellow_bold {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -98,6 +128,9 @@ macro_rules! println_yellow_bold {
 /// Like [`print!`], but green.
 #[macro_export]
 macro_rules! print_green {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -107,6 +140,9 @@ macro_rules! print_green {
 /// Like [`println!`], but green.
 #[macro_export]
 macro_rules! println_green {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -116,6 +152,9 @@ macro_rules! println_green {
 /// Like [`print!`], but geen and bold.
 #[macro_export]
 macro_rules! print_green_bold {
+    () => {
+        print!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
@@ -125,6 +164,9 @@ macro_rules! print_green_bold {
 /// Like [`println!`], but green and bold.
 #[macro_export]
 macro_rules! println_green_bold {
+    () => {
+        println!();
+    };
     ($($arg:tt)*) => {{
         use $crate::_private::colored::Colorize as _;
         let s: String = format!($($arg)*);
