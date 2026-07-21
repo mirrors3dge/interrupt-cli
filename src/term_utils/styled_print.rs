@@ -1,8 +1,8 @@
 //! Provides constant corresponding to ANSI escape codes to print to the terminal with different
 //! styles and colors. Import them all with `use interrupt_cli::term_utils::styled_print::*;`.
 //!
-//! Also exports [`println_red!`], [`println_bold!`], etc. macros (at the crate root) for
-//! convenience (although, not every style/color is covered).
+//! Also exports [`println_red!`](`crate::println_red!`), [`println_bold!`](`crate::println_bold!`),
+//! etc. macros (at the crate root) for convenience (although, not every style/color is covered).
 //!
 //! Note: bright color is the same as bold + color.
 //!
