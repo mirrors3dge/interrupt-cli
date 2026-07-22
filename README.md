@@ -1,15 +1,14 @@
 # Interrupt-cli
 
-A CLI prompt library built around the idea of **interruptible input**:
-every prompt can be interrupted at any time by user-defined commands to affect the control flow of your program.
+A CLI prompt library that aims to facilitates the handling of user input around the idea of **interrupt commands**: every prompt can be interrupted at any time by user-defined commands to affect the control flow of your program.
 
-To get started, implement the `Command` trait for your type to define which keywords interrupt all prompts globally.
+To get started, implement the `Command` trait for your type to define the set of interrupt commands available across all prompts.
 
 Then, you can use the different prompts types (`prompts::TextPrompt`, `prompts::SelectPrompt`, `prompts::U64Prompt`, etc. that all implement the `Prompt` trait) to get the user input.
 
 ## Crate features
 
-- `styled-print` (default): provides constant in `interrupt_cli::term_utils::styled_print` corresponding to ANSI escape codes to print to the terminal with different styles and colors. Also enables `println_red!`, `println_bold!` and other terminal styling macros, but only works in ANSI terminals!
+- `styled-print` (default): provides constant in `interrupt_cli::term_utils::styled_print` corresponding to ANSI escape codes to print to the terminal with different styles and colors. Also enables [`println_red!`], [`println_bold!`] and other terminal styling macros, but only works in ANSI terminals!
 
 - `use-styled-print` (default): when enabled, some errors printed by this crate's prompts at runtime will be colored and styled, but only works in ANSI terminals!
 

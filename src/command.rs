@@ -11,7 +11,7 @@ pub enum Interrupt<C: Command> {
     Cmd(C),
 }
 
-/// Implement this trait on an enum to define the set of interrupt commands available accross all
+/// Implement this trait on an enum to define the set of interrupt commands available across all
 /// prompts, returned as `Err(Interrupt::Cmd(cmd))` when succesfully parsed from a prompt input.
 ///
 /// Its [`FromStr::Err`] associated type must be `()` as it doesn't need to hold any information.

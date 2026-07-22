@@ -5,7 +5,7 @@
 //! affect the control flow of your program.
 //!
 //! To get started, implement the [`Command`] trait for your type to define the set of interrupt
-//! commands available accross all prompts.
+//! commands available across all prompts.
 //!
 //! Then, you can use the different prompts types ([`prompts::TextPrompt`], [`prompts::SelectPrompt`],
 //! [`prompts::U64Prompt`], etc. that all implement the [`Prompt`] trait) to get the user input.
