@@ -103,7 +103,7 @@ use private::PromptBuilder;
 ///             } else {
 ///                 Ok(())
 ///             }
-///         }).prompt(); // displays the prompt, blocks the current thread until the user types an input
+///         }).prompt(); // displays the prompt, blocks current thread until the user types an input
 ///
 ///     match input {
 ///         Ok(input) => println!("you entered: {input}"),

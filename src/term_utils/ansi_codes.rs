@@ -1,15 +1,12 @@
 //! Provides constant corresponding to ANSI escape codes to print to the terminal with different
-//! styles and colors. Import them all with `use interrupt_cli::term_utils::styled_print::*;`.
-//!
-//! Also exports [`println_red!`](`crate::println_red!`), [`println_bold!`](`crate::println_bold!`),
-//! etc. macros (at the crate root) for convenience (although, not every style/color is covered).
+//! styles and colors. Import them all with `use interrupt_cli::term_utils::ansi_codes::*;`.
 //!
 //! Note: bright color is the same as bold + color.
 //!
 //! ## Usage
 //!
 //! ```
-//! use interrupt_cli::term_utils::styled_print::*;
+//! use interrupt_cli::term_utils::ansi_codes::*;
 //! use interrupt_cli::println_red;
 //!
 //! // these two lines are equivalent:
@@ -138,129 +135,3 @@ pub const BG_BRIGHT_WHITE: &str = "\x1b[107m";
 pub const DEFAULT: &str = "\x1b[39m";
 /// Set background color to default.
 pub const BG_DEFAULT: &str = "\x1b[49m";
-
-// --- BOLD --- //
-/// Like [`print!`], but bold.
-#[macro_export]
-macro_rules! print_bold {
-    () => {
-        print!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        print!("{BOLD}{}{NOT_BOLD}", format_args!($($arg)*))
-    }};
-}
-/// Like [`println!`], but bold.
-#[macro_export]
-macro_rules! println_bold {
-    () => {
-        println!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        println!("{BOLD}{}{NOT_BOLD}", format_args!($($arg)*))
-    }};
-}
-
-// --- RED --- //
-/// Like [`print!`], but in red.
-#[macro_export]
-macro_rules! print_red {
-    () => {
-        print!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        print!("{RED}{}{RESET}", format_args!($($arg)*))
-    }};
-}
-/// Like [`println!`], but in red.
-#[macro_export]
-macro_rules! println_red {
-    () => {
-        println!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        println!("{RED}{}{RESET}", format_args!($($arg)*))
-    }};
-}
-
-// --- YELLOW --- //
-/// Like [`print!`], but in yellow.
-#[macro_export]
-macro_rules! print_yellow {
-    () => {
-        print!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        print!("{YELLOW}{}{RESET}", format_args!($($arg)*))
-    }};
-}
-/// Like [`println!`], but in yellow.
-#[macro_export]
-macro_rules! println_yellow {
-    () => {
-        println!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        println!("{YELLOW}{}{RESET}", format_args!($($arg)*))
-    }};
-}
-
-// --- GREEN --- //
-/// Like [`print!`], but in green.
-#[macro_export]
-macro_rules! print_green {
-    () => {
-        print!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        print!("{GREEN}{}{RESET}", format_args!($($arg)*))
-    }};
-}
-/// Like [`println!`], but in green.
-#[macro_export]
-macro_rules! println_green {
-    () => {
-        println!();
-    };
-    ($($arg:tt)*) => {{
-        use $crate::term_utils::styled_print::*;
-        println!("{GREEN}{}{RESET}", format_args!($($arg)*))
-    }};
-}
-
-// --- RGB --- //
-/// Like [`print!`], but in the given rgb color passed first as a tuple:
-///
-/// `print_rgb!((255, 0, 0), "Hello, {}!", "world"); // prints in red`
-#[macro_export]
-macro_rules! print_rgb {
-    ($rgb:expr) => {{
-        let (r, g, b): (u8, u8, u8) = $rgb;
-        print!("\x1b[38;2;{r};{g};{b}m{RESET}")
-    }};
-    ($rgb:expr, $($arg:tt)*) => {{
-        let (r, g, b): (u8, u8, u8) = $rgb;
-        print!("\x1b[38;2;{r};{g};{b}m{}{RESET}", format_args!($($arg)*))
-    }};
-}
-/// Like [`println!`], but in the given rgb color passed first as a tuple:
-///
-/// `println_rgb!((255, 0, 0), "Hello, {}!", "world"); // prints in red`
-#[macro_export]
-macro_rules! println_rgb {
-    ($rgb:expr) => {{
-        let (r, g, b): (u8, u8, u8) = $rgb;
-        println!("\x1b[38;2;{r};{g};{b}m{RESET}")
-    }};
-    ($rgb:expr, $($arg:tt)*) => {{
-        let (r, g, b): (u8, u8, u8) = $rgb;
-        println!("\x1b[38;2;{r};{g};{b}m{}{RESET}", format_args!($($arg)*))
-    }};
-}

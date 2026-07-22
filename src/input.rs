@@ -1,10 +1,11 @@
+#[cfg(feature = "clear-output")]
 use crate::term_utils::clear_terminal;
 use crate::{Command, Interrupt};
-#[cfg(feature = "use-styled-print")]
+#[cfg(feature = "term-utils")]
 use crate::{println_red, println_yellow};
-#[cfg(not(feature = "use-styled-print"))]
+#[cfg(not(feature = "term-utils"))]
 use println as println_red;
-#[cfg(not(feature = "use-styled-print"))]
+#[cfg(not(feature = "term-utils"))]
 use println as println_yellow;
 
 use std::cell::LazyCell;
@@ -244,6 +245,7 @@ pub(crate) fn read_input<C: Command>(
         // read input
         let input: Result<String, RecvError> = INPUT_READER.lock().expect("mutex poisoned").read();
 
+        #[cfg(feature = "clear-output")]
         clear_terminal();
 
         let input: String = match input {
@@ -323,6 +325,7 @@ pub(crate) fn read_input_timeout<C: Command>(
             // since the user didn't press enter, print newline to remain consistent with other scenarios
             println!();
         }
+        #[cfg(feature = "clear-output")]
         clear_terminal();
 
         let input: String = match input {

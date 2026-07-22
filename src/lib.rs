@@ -1,6 +1,6 @@
 //! # Interrupt-cli
 //!
-//! A CLI prompt library that aims to facilitates the handling of user input around the idea of
+//! A CLI prompt library that aims to facilitate the handling of user input around the idea of
 //! **interrupt commands**: every prompt can be interrupted at any time by user-defined commands to
 //! affect the control flow of your program.
 //!
@@ -12,13 +12,14 @@
 //!
 //! ## Crate features
 //!
-//! - `styled-print` (default): provides constant in `interrupt_cli::term_utils::styled_print`
-//!   corresponding to ANSI escape codes to print to the terminal with different styles and colors.
-//!   Also enables [`println_red!`], [`println_bold!`] and other terminal styling macros,
-//!   but only works in ANSI terminals!
+//! On by default:
 //!
-//! - `use-styled-print` (default): when enabled, some errors printed by this crate's prompts at
-//!   runtime will be colored and styled, but only works in ANSI terminals!
+//! - `term-utils`: enables de [`term-utils`](crate::term_utils) module, which contains various
+//!   functions/macros/constants useful for working with the terminal. Only works with an ANSI
+//!   terminal!
+//!
+//! - `clear-output`: when enabled, clears the terminal screen after each prompt, giving a more
+//!   interactive feel. Requires the `term-utils` feature which only work with an ANSI terminal!
 //!
 //! ## Comprehensive exemple
 //!
@@ -96,7 +97,7 @@
 //!             } else {
 //!                 Ok(())
 //!             }
-//!         }).prompt(); // displays the prompt, blocks the current thread until the user types an input
+//!         }).prompt(); // displays the prompt, blocks current thread until the user types an input
 //!
 //!     match input {
 //!         Ok(input) => println!("you entered: {input}"),
@@ -111,6 +112,7 @@
 mod command;
 mod input;
 pub mod prompts;
+#[cfg(feature = "term-utils")]
 pub mod term_utils;
 
 pub use command::{Command, Interrupt, Unparsable};
