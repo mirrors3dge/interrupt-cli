@@ -1,5 +1,5 @@
 //! Contains various functions and the [`ansi_codes`] module for working with the terminal.
-//! Only works with an ANSI terminal!
+//! Everything in this module only works with an ANSI terminal!
 //!
 //! Also exports [`println_red!`](`crate::println_red!`), [`println_bold!`](`crate::println_bold!`),
 //! etc. macros (at the crate root) for convenience (although, not every style/color is covered).
