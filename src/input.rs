@@ -117,7 +117,7 @@ impl InputReader {
     }
 }
 
-const NO_HELP_MSG: &str = "No help available for this prompt.";
+const NO_HELP_MSG: &str = "No specific help available for this prompt.";
 const FORMAT_WIDTH: usize = 80;
 static HELP_KEYWORD_WIDTH: OnceLock<usize> = OnceLock::new();
 
