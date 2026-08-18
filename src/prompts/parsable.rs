@@ -75,10 +75,10 @@ where
                 Ok(parsed) => parsed,
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(fallback);
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
@@ -118,10 +118,10 @@ where
                 Ok(parsed) => parsed,
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(Some(fallback));
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
@@ -160,10 +160,10 @@ where
                 Ok(parsed) => parsed,
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(InputTimeout::Input(fallback));
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
@@ -214,10 +214,10 @@ where
                 Ok(parsed) => parsed,
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(OptionalInputTimeout::Input(fallback));
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }

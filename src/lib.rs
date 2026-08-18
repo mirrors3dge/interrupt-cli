@@ -86,9 +86,9 @@
 //!     // define help for each command
 //!     fn help() -> &'static [(&'static str, &'static str)] {
 //!         &[
-//!             ("restart", "restart the session"),
-//!             ("back", "go to the previous menu"),
-//!             ("status", "show the current status"),
+//!             ("restart", "Restart the session."),
+//!             ("back", "Go to the previous menu."),
+//!             ("status", "Show the current status."),
 //!         ]
 //!     }
 //! }

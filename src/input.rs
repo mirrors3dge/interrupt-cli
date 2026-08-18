@@ -145,7 +145,7 @@ pub enum OptionalInputTimeout<T> {
 /// If stdin is closed, returns true in order to gracefully exit the program.
 fn confirm_exit() -> bool {
     loop {
-        print!("Confirm exit? (y/n): ");
+        print!("confirm exit? (y/n): ");
         io::stdout().flush().expect("failed to flush stdout");
 
         let mut input: String = match INPUT_READER.lock().expect("mutex poisoned").read() {
