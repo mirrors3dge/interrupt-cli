@@ -80,7 +80,7 @@ use private::PromptBuilder;
 /// presses Enter. This is a known limitation arising from the inability to interrupt a blocking
 /// [`read_line`](`std::io::Stdin::read_line`) call.
 ///
-/// ## Prompt exemple
+/// ## Prompt example
 ///
 /// ```ignore
 /// use interrupt_cli::prompts::TextPrompt;

@@ -26,7 +26,7 @@ pub enum Interrupt<C: Command> {
 /// have global side effects. They aren't returned to the caller via [`Interrupt`], but passed to
 /// [`Self::internal()`] instead to be executed, then, control resumes to the last prompt.
 ///
-/// Exemple: the default 'help' command behaves like an internal command; it prints to the terminal
+/// Example: the default 'help' command behaves like an internal command; it prints to the terminal
 /// and doesn't affect the control flow (control resumes to the last prompt), so it isn't retuned
 /// via [`Interrupt`].
 ///
@@ -39,7 +39,7 @@ pub enum Interrupt<C: Command> {
 /// 2) `Self::from_str`: normal commands, returned as `Err(Interrupt::Cmd(cmd))`.
 /// 3) `Self::Internal::from_str`: internal commands with a global side effect, re-prompts.
 ///
-/// ## Exemple implementation
+/// ## Example implementation
 ///
 /// ```
 /// use interrupt_cli::Command;
@@ -124,7 +124,7 @@ pub trait Command: FromStr<Err = ()> {
     /// - `keyword`: the keyword for this command (at most 26 characters for proper formatting)
     /// - `descr`: a short description of the command
     ///
-    /// For exemple, the "exit" command would have the tuple `("exit", "exit the program")`.
+    /// For example, the "exit" command would have the tuple `("exit", "exit the program")`.
     ///
     /// the "exit" and "help" built-in commands are handled for you and must not be part of
     /// this function.

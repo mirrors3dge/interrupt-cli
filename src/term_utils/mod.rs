@@ -17,6 +17,9 @@ pub fn clear_terminal() {
 }
 
 /// Returns a formatted link printable to the terminal (like markdown `[text](link)`).
+///
+/// The number of chars of the returned `String` is the number of chars of `text` + `url` + 14 ansi
+/// controls chars.
 pub fn fmt_link(text: impl AsRef<str>, url: impl AsRef<str>) -> String {
     format!(
         "\x1b]8;;{}\x1b\\{}\x1b]8;;\x1b\\",

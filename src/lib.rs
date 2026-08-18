@@ -21,7 +21,7 @@
 //! - `clear-output`: when enabled, clears the terminal screen after each prompt, giving a more
 //!   interactive feel. Requires the `term-utils` feature which only work with an ANSI terminal!
 //!
-//! ## Comprehensive exemple
+//! ## Comprehensive example
 //!
 //! ```
 //! use interrupt_cli::prompts::TextPrompt;
