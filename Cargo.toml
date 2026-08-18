@@ -13,6 +13,7 @@ categories = ["accessibility", "command-line-interface", "parsing"]
 default = ["term-utils", "clear-output"]
 term-utils = []
 clear-output = ["term-utils"]
+no-fallback-drop = []
 
 [dependencies]
 

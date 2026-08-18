@@ -163,7 +163,7 @@ pub trait Prompt<C: Command>: Sized {
         timeout: Duration,
     ) -> Result<OptionalInputTimeout<Self::T>, Interrupt<C>>;
 
-    // --- Provided function --- //
+    // --- Provided functions --- //
 
     /// Replace the prompt message on an already-configured prompt.
     ///
@@ -189,6 +189,8 @@ pub trait Prompt<C: Command>: Sized {
     /// The fallback is silently dropped if it fails any of the filters already attached to the
     /// prompt (see [`with_filter()`](Self::with_filter). The fallback is also silently dropped if
     /// any new filter added by [`with_filter()`](Self::with_filter) rejects it at any time.
+    /// This behavior can be changed to a `panic!` instead of dropping the value by enabling the
+    /// "no-fallback-drop" feature.
     #[must_use]
     fn with_fallback<'f>(mut self, fallback: Self::T) -> Self
     where
@@ -201,7 +203,11 @@ pub trait Prompt<C: Command>: Sized {
             .iter()
             .any(|filter| (filter)(&fallback).is_err())
         {
-            return self;
+            if cfg!(feature = "no-fallback-drop") {
+                panic!("the prompt fallback value got rejected by an existing filter")
+            } else {
+                return self;
+            }
         }
 
         params.fallback = Some(fallback);
@@ -214,7 +220,8 @@ pub trait Prompt<C: Command>: Sized {
     /// It is preferable for the error message to be a one liner for consistent formatting.
     ///
     /// If the fallback value already set by [`with_fallback()`](`Self::with_fallback`) is
-    /// invalidated by a new filter, the fallback is dropped.
+    /// invalidated by a new filter, the fallback is silently dropped. This behavior can be changed
+    /// to a `panic!` instead of dropping the value by enabling the "no-fallback-drop" feature.
     #[must_use]
     fn with_filter<'f, F, E>(mut self, filter: F) -> Self
     where
@@ -228,7 +235,11 @@ pub trait Prompt<C: Command>: Sized {
         if let Some(fallback) = &params.fallback
             && (filter)(fallback).is_err()
         {
-            params.fallback = None;
+            if cfg!(feature = "no-fallback-drop") {
+                panic!("the new prompt filter rejected the current fallback value")
+            } else {
+                params.fallback = None;
+            }
         }
 
         params.filters.push(Arc::new(move |input| {
@@ -237,7 +248,7 @@ pub trait Prompt<C: Command>: Sized {
         self
     }
 
-    /// Adds a help message to the prompt.
+    /// Add a help message to the prompt.
     ///
     /// Help is shown when the user types 'help'.
     #[must_use]
