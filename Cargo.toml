@@ -27,7 +27,7 @@ unused_crate_dependencies = "warn"
 # crate
 cargo_common_metadata = "warn"
 multiple_crate_versions = "warn"
-negative_feature_names = "warn"
+negative_feature_names = "allow"
 redundant_feature_names = "warn"
 wildcard_dependencies = "warn"
 
