@@ -20,7 +20,7 @@ Off by default:
 
 ## Comprehensive example
 
-```Rust
+```rust
 use interrupt_cli::prompts::TextPrompt;
 use interrupt_cli::{Command, Interrupt, Prompt as _};
 use std::str::FromStr;
