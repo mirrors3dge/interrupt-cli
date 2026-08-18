@@ -82,10 +82,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 Ok(parsed) => {
                     if !(1..=self.choices.len()).contains(&parsed) {
                         if let Some(fallback) = self.params.fallback {
-                            println_red!("Invalid choice number: '{parsed}' (using fallback)");
+                            println_red!("invalid choice number: '{parsed}' (using fallback)");
                             return Ok(fallback);
                         } else {
-                            println_red!("Invalid choice number: '{parsed}'");
+                            println_red!("invalid choice number: '{parsed}'");
                             continue 'attempt;
                         }
                     }
@@ -93,10 +93,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 }
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(fallback);
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
@@ -136,10 +136,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 Ok(parsed) => {
                     if !(1..=self.choices.len()).contains(&parsed) {
                         if let Some(fallback) = self.params.fallback {
-                            println_red!("Invalid choice number: '{parsed}' (using fallback)");
+                            println_red!("invalid choice number: '{parsed}' (using fallback)");
                             return Ok(Some(fallback));
                         } else {
-                            println_red!("Invalid choice number: '{parsed}'");
+                            println_red!("invalid choice number: '{parsed}'");
                             continue 'attempt;
                         }
                     }
@@ -147,10 +147,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 }
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(Some(fallback));
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
@@ -189,10 +189,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 Ok(parsed) => {
                     if !(1..=self.choices.len()).contains(&parsed) {
                         if let Some(fallback) = self.params.fallback {
-                            println_red!("Invalid choice number: '{parsed}' (using fallback)");
+                            println_red!("invalid choice number: '{parsed}' (using fallback)");
                             return Ok(InputTimeout::Input(fallback));
                         } else {
-                            println_red!("Invalid choice number: '{parsed}'");
+                            println_red!("invalid choice number: '{parsed}'");
                             continue 'attempt;
                         }
                     }
@@ -200,10 +200,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 }
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(InputTimeout::Input(fallback));
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
@@ -254,10 +254,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 Ok(parsed) => {
                     if !(1..=self.choices.len()).contains(&parsed) {
                         if let Some(fallback) = self.params.fallback {
-                            println_red!("Invalid choice number: '{parsed}' (using fallback)");
+                            println_red!("invalid choice number: '{parsed}' (using fallback)");
                             return Ok(OptionalInputTimeout::Input(fallback));
                         } else {
-                            println_red!("Invalid choice number: '{parsed}'");
+                            println_red!("invalid choice number: '{parsed}'");
                             continue 'attempt;
                         }
                     }
@@ -265,10 +265,10 @@ impl<'f, C: Command> Prompt<C> for SelectPrompt<'f, C> {
                 }
                 Err(err) => {
                     if let Some(fallback) = self.params.fallback {
-                        println_red!("Failed to parse '{input}': {err} (using fallback)");
+                        println_red!("failed to parse '{input}': {err} (using fallback)");
                         return Ok(OptionalInputTimeout::Input(fallback));
                     } else {
-                        println_red!("Failed to parse '{input}': {err}");
+                        println_red!("failed to parse '{input}': {err}");
                         continue 'attempt;
                     }
                 }
