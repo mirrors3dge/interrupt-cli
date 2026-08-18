@@ -1,8 +1,8 @@
 //! # Interrupt-cli
 //!
-//! A CLI prompt library that aims to facilitate the handling of user input around the idea of
-//! **interrupt commands**: every prompt can be interrupted at any time by user-defined commands to
-//! affect the control flow of your program.
+//! Facilitate the handling of user input in your CLI around the idea of "*interrupt commands*":
+//! every prompt can be interrupted at any time by user-defined commands to affect the control flow
+//! of your program.
 //!
 //! To get started, implement the [`Command`] trait for your type to define the set of interrupt
 //! commands available across all prompts.

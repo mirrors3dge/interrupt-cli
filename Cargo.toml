@@ -2,7 +2,7 @@
 name = "interrupt-cli"
 version = "1.0.0"
 edition = "2024"
-description = "Facilitates the handling of user input for building a CLI"
+description = "Facilitate the handling of user input in your CLI"
 license = "MIT"
 repository = "https://github.com/mirrors3dge/interrupt-cli"
 readme = "README.md"

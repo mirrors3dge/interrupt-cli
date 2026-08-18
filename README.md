@@ -1,6 +1,6 @@
 # Interrupt-cli
 
-A CLI prompt library that aims to facilitate the handling of user input around the idea of **interrupt commands**: every prompt can be interrupted at any time by user-defined commands to affect the control flow of your program.
+Facilitate the handling of user input in your CLI around the idea of "_interrupt commands_": every prompt can be interrupted at any time by user-defined commands to affect the control flow of your program.
 
 To get started, implement the `Command` trait for your type to define the set of interrupt commands available across all prompts.
 
@@ -77,9 +77,9 @@ impl Command for MyCmd {
     // define help for each command
     fn help() -> &'static [(&'static str, &'static str)] {
         &[
-            ("restart", "restart the session"),
-            ("back", "go to the previous menu"),
-            ("status", "show the current status"),
+            ("restart", "Restart the session."),
+            ("back", "Go to the previous menu."),
+            ("status", "Show the current status."),
         ]
     }
 }
