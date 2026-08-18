@@ -14,6 +14,10 @@ On by default:
 
 - `clear-output`: when enabled, clears the terminal screen after each prompt, giving a more interactive feel. Requires the `term-utils` feature which only work with an ANSI terminal!
 
+Off by default:
+
+- `no-fallback-drop`: panics instead of silently dropping the prompt fallback value if it gets rejected by a filter (see `Prompt::with_fallback` and `Prompt::with_filter` for more details).
+
 ## Comprehensive example
 
 ```Rust
