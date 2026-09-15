@@ -198,15 +198,13 @@ pub trait Prompt<C: Command>: Sized {
     {
         let params = self.get_params_mut();
 
-        if params
-            .filters
-            .iter()
-            .any(|filter| (filter)(&fallback).is_err())
-        {
-            if cfg!(feature = "no-fallback-drop") {
-                panic!("the prompt fallback value got rejected by an existing filter")
-            } else {
-                return self;
+        for filter in &params.filters {
+            if let Err(err) = (filter)(&fallback) {
+                if cfg!(feature = "no-fallback-drop") {
+                    panic!("the prompt fallback value got rejected by an existing filter: {err}")
+                } else {
+                    return self;
+                }
             }
         }
 
@@ -233,10 +231,10 @@ pub trait Prompt<C: Command>: Sized {
 
         // remove fallback if rejected by the new filter
         if let Some(fallback) = &params.fallback
-            && (filter)(fallback).is_err()
+            && let Err(err) = (filter)(fallback)
         {
             if cfg!(feature = "no-fallback-drop") {
-                panic!("the new prompt filter rejected the current fallback value")
+                panic!("the new prompt filter rejected the current fallback value: {err}")
             } else {
                 params.fallback = None;
             }
