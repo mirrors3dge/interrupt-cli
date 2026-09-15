@@ -1,4 +1,4 @@
-//! Provides constant corresponding to ANSI escape codes to print to the terminal with different
+//! Provides constants corresponding to ANSI escape codes to print to the terminal with different
 //! styles and colors. Import them all with `use interrupt_cli::term_utils::ansi_codes::*;`.
 //!
 //! Note: bright color is the same as bold + color.
