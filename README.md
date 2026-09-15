@@ -53,7 +53,6 @@ impl FromStr for MyInternalCmd {
     type Err = ();
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        // typing these commands will trigger a call to `Self::internal()`
         match s.to_lowercase().as_str() {
             "status" => Ok(MyInternalCmd::Status),
             _ => Err(()),
